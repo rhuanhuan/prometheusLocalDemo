@@ -1,5 +1,9 @@
 ### 一个用于在本地部署Prometheus以及相关服务，并使用Prometheus监控他们的workshop。
 基于MacOS
+- 获取自身状态
+- 获取容器状态
+- 获取node状态
+- 基于文件的服务发现
 
 ### [Prometheus](https://prometheus.io/docs/introduction/overview/)获取自身状态  
 prometheus.yml文件：
