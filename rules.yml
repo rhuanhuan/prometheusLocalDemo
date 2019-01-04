@@ -1,0 +1,14 @@
+groups:
+- name: test-rule
+  rules:
+  - alert: NodeDOWN
+    expr: job:up{job="node"} < 5
+    # for语句会使 Prometheus 服务等待指定的时间, 然后执行查询表达式
+    for: 2m
+    # labels语句允许指定额外的标签列表，把它们附加在告警上。
+    labels:
+      team: node
+    # annotations语句指定了另一组标签，它们不被当做告警实例的身份标识，它们经常用于存储一些额外的信息，用于报警信息的展示之类的。
+    annotations:
+      summary: "{{$labels.instance}}: Server is down"
+      description: "{{$labels.instance}}: Server is down"

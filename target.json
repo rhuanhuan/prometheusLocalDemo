@@ -1,0 +1,18 @@
+[
+  {
+    "labels": {
+      "job": "node"
+    },
+    "targets": [
+      "docker.for.mac.localhost:9100"
+    ]
+  },
+  {
+    "labels": {
+      "job": "node"
+    },
+    "targets": [
+      "docker.for.mac.localhost:9101"
+    ]
+  }
+]
