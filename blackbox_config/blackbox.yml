@@ -1,0 +1,32 @@
+modules:
+  http_2xx:
+    prober: http
+    http:
+      method: GET
+# 探针也支持自定义http请求。HTTP请求方法、HTTP头信息、请求参数等。
+# 对于某些启用了安全认证的服务还需要能够对HTTP探测设置相应的Auth支持。对于HTTPS类型的服务还需要能够对证书进行自定义设置。
+# 对于使用了Bear Token的服务也可以通过bearer_token配置项直接指定令牌字符串，或者通过bearer_token_file指定令牌文件。
+# 参考文件：https://yunlzheng.gitbook.io/prometheus-book/part-ii-prometheus-jin-jie/exporter/commonly-eporter-usage/install_blackbox_exporter
+  http_post_2xx:
+    prober: http
+    timeout: 5s
+    http:
+      method: POST
+      headers:
+        Content-Type: application/json
+      body: '{}'
+      basic_auth:
+        username: "username"
+        password: "mysecret"
+
+## 探针类型：http、 tcp、 dns、 icmp.
+#  prober: <prober_string>
+#  ​
+## 超时时间
+#  [ timeout: <duration> ]
+#  ​
+## 探针的详细配置，最多只能配置其中的一个
+#  [ http: <http_probe> ]
+#  [ tcp: <tcp_probe> ]
+#  [ dns: <dns_probe> ]
+#  [ icmp: <icmp_probe> ]

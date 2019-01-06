@@ -80,6 +80,18 @@ function enable_kong_prometheus_plugin() {
     curl http://localhost:8001/plugins -d name=prometheus
 }
 
+function install_black_box_exporter_and_test_probe_baidu() {
+    echo "Install black box exporter for prom on 9115"
+    docker run -d \
+        -p 9115:9115 \
+        --name blackbox_exporter \
+        -v `pwd`/blackbox_config:/config \
+        prom/blackbox-exporter \
+        --config.file=/config/blackbox.yml
+    echo "Probe baidu"
+    curl "http://localhost:9115/probe?module=http_2xx&target=baidu.com"
+}
+
 case $1 in
     deploy_prometheus) deploy_prometheus;;
     deploy_alert_manager) deploy_alert_manager;;
@@ -87,5 +99,6 @@ case $1 in
     deploy_grafana) deploy_grafana;;
     deploy_kong) deploy_kong;;
     install_node_exporter) install_node_exporter $2;;
+    install_black_box_exporter_and_test_probe_baidu) install_black_box_exporter_and_test_probe_baidu;;
     *) echo "Error command";;
 esac
