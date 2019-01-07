@@ -1,15 +1,16 @@
 ### 一个用于在本地部署Prometheus以及相关服务，并使用Prometheus监控他们的workshop。
 基于MacOS  
 尽量使用容器化的方式实现，demo内容包括
-- 获取Prom自身状态
-- 获取container状态
-- 获取node状态
-- 基于文件的Service Discovery
-- 对于kong，使用plugin,从而获取kong的状态
-- 部署blackbox exporter, 通过（HTTP, HTTPS, DNS, TCP and ICMP）获取节点的状态信息
+- 获取Prom自身状态 (done)
+- 获取container状态 (done)
+- 获取node状态 (done)
+- 基于文件的Service Discovery (done)
+- 对于kong，使用plugin,从而获取kong的状态 (done)
+- 部署blackbox exporter, 通过（HTTP, HTTPS, DNS, TCP and ICMP）获取节点的状态信息。(done)
 - 对于Spring boot 2.0+的应用，通过microExporter获取java程序状态
 - 获取NodeJs应用状态
-- 配置AlertManager报警，集成WeChat
+- 配置AlertManager报警
+- Alert集成WeChat
 
 
 ### [Prometheus](https://prometheus.io/docs/introduction/overview/)获取自身状态  

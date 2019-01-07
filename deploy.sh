@@ -3,14 +3,14 @@
 function deploy_prometheus() {
     echo "Deploy Prometheus container locally on 9090"
     docker run -p 9090:9090 \
-        -v ./prometheus.yml:/etc/prometheus/prometheus.yml \
+        -v `pwd`/prometheus.yml:/etc/prometheus/prometheus.yml \
         prom/prometheus
 }
 
 function deploy_alert_manager() {
     echo "Deploy AlertManager container locally on 9093"
     docker run -p 9093:9093 \
-        -v ./alertmanager.yml:/etc/alertmanager/config.yml \
+        -v `pwd`/alertmanager.yml:/etc/alertmanager/config.yml \
         prom/alertmanager \
         --config.file=/etc/alertmanager/config.yml
 }
