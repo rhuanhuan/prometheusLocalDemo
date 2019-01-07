@@ -6,6 +6,9 @@ global:
   external_labels:
     monitor: 'codelab-monitor'
 
+  # 告警计算周期配置，默认1m
+  evaluation_interval: 1m
+
 rule_files:
   - /etc/prometheus/rules.yml
 

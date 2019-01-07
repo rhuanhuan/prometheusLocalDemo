@@ -1,9 +1,10 @@
 groups:
 - name: test-rule
   rules:
+  # Alert for any instance that is unreachable for >5 minutes.
   - alert: NodeDOWN
-    expr: job:up{job="node"} < 5
-    # for语句会使 Prometheus 服务等待指定的时间, 然后执行查询表达式
+    # 基于PromQL表达式告警触发条件，用于计算是否有时间序列满足该条件
+    expr: up == 0
     for: 2m
     # labels语句允许指定额外的标签列表，把它们附加在告警上。
     labels:

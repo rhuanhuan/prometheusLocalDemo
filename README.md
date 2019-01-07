@@ -9,8 +9,8 @@
 - 部署blackbox exporter, 通过（HTTP, HTTPS, DNS, TCP and ICMP）获取节点的状态信息。(done)
 - 对于Spring boot 2.0+的应用，通过microExporter获取java程序状态
 - 获取NodeJs应用状态
-- 配置AlertManager报警
-- Alert集成WeChat
+- 配置AlertManager报警, 集成SMTP服务(done)
+- 使用Grafana展示结果(done)
 
 
 ### [Prometheus](https://prometheus.io/docs/introduction/overview/)获取自身状态  
