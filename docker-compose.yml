@@ -12,6 +12,7 @@ services:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     - ./target.json:/etc/prometheus/target.json:ro
     - ./rules.yml:/etc/prometheus/rules.yml:ro
+    - ./blackbox_config:/etc/prometheus/blackbox_config:ro
     depends_on:
     - cadvisor
   cadvisor:

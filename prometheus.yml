@@ -67,7 +67,7 @@ scrape_configs:
         replacement: docker.for.mac.localhost:9115  # The blackbox exporter's real hostname:port.
     file_sd_configs:
       - files:
-          - '/config/blackbox.yml'
+          - './blackbox_config/blackbox-target.json'
 
 # Alerting specifies settings related to the Alertmanager.
 alerting:
