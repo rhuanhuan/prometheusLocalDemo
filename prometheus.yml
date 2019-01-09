@@ -39,7 +39,7 @@ scrape_configs:
   - job_name: 'spring'
     metrics_path: '/actuator/prometheus'
     static_configs:
-      - targets: ['docker.for.mac.localhost:8000']
+      - targets: ['docker.for.mac.localhost:7000']
 
 # 这里使用Prom的relabel方式，减少配置
 # 这里针对每一个探针服务（如http_2xx）定义一个采集任务，将任务的采集目标定义为我们需要探测的站点。
@@ -47,6 +47,7 @@ scrape_configs:
 # 第1步，根据Target实例的地址，写入__param_target标签中。__param_<name>形式的标签表示，在采集任务时会在请求目标地址中添加<name>参数，等同于params的设置；
 # 第2步，获取__param_target的值，并覆写到instance标签中；
 # 第3步，覆写Target实例的__address__标签值为BlockBox Exporter实例的访问地址。
+# ?target=prometheus.io&module=http_2xx&debug=true方式可观察监听过程
 
   - job_name: 'blackbox'
     metrics_path: /probe
@@ -56,7 +57,7 @@ scrape_configs:
       - targets:
         - http://prometheus.io    # Target to probe with http.
         - https://prometheus.io   # Target to probe with https.
-        - http://localhost:8001 # Target to probe with http on port 8080.
+        - http://localllllllhost:8001 # Target to probe with http on port 8080.
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
@@ -64,6 +65,9 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: docker.for.mac.localhost:9115  # The blackbox exporter's real hostname:port.
+    file_sd_configs:
+      - files:
+          - '/config/blackbox.yml'
 
 # Alerting specifies settings related to the Alertmanager.
 alerting:

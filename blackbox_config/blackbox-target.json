@@ -1,0 +1,18 @@
+[
+  {
+    "labels": {
+      "job": "blackbox"
+    },
+    "targets": [
+      "baidu.com"
+    ]
+  },
+  {
+    "labels": {
+      "job": "blackbox"
+    },
+    "targets": [
+      "google.com"
+    ]
+  }
+]

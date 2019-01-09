@@ -2,6 +2,7 @@ modules:
   http_2xx:
     prober: http
     http:
+      preferred_ip_protocol: ip4
       method: GET
 # 探针也支持自定义http请求。HTTP请求方法、HTTP头信息、请求参数等。
 # 对于某些启用了安全认证的服务还需要能够对HTTP探测设置相应的Auth支持。对于HTTPS类型的服务还需要能够对证书进行自定义设置。

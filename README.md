@@ -10,6 +10,7 @@
 - 对于Spring boot 2.0+的应用，通过microExporter获取java程序状态
 - 获取NodeJs应用状态
 - 配置AlertManager报警, 集成SMTP服务(done)
+- 配置AlertManage使用PagerDuty报警
 - 使用Grafana展示结果(done)
 
 
