@@ -12,6 +12,7 @@
 - 配置AlertManager报警, 集成SMTP服务(done)
 - 配置AlertManage使用PagerDuty报警
 - 使用Grafana展示结果(done)
+- 使用Http API request获取结果，例如过去一段时间服务每天的uptime(done)
 
 
 ### [Prometheus](https://prometheus.io/docs/introduction/overview/)获取自身状态  
