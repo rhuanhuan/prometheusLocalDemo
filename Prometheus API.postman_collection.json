@@ -1,0 +1,77 @@
+{
+	"info": {
+		"name": "Prometheus API",
+		"_postman_id": "c0a7ae6e-f276-ee21-de13-0c785a2597bd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Reload Config",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9090/-/reload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"-",
+						"reload"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get uptime daily",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:9090/api/v1/query_range?query=avg_over_time(probe_success{instance=\"https://prometheus.io\"}[1d])&start=2019-01-01T00:00:00.00Z&end=2019-01-11T00:00:00.00Z&step=24h",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"v1",
+						"query_range"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "avg_over_time(probe_success{instance=\"https://prometheus.io\"}[1d])",
+							"equals": true
+						},
+						{
+							"key": "start",
+							"value": "2019-01-01T00:00:00.00Z",
+							"equals": true
+						},
+						{
+							"key": "end",
+							"value": "2019-01-11T00:00:00.00Z",
+							"equals": true
+						},
+						{
+							"key": "step",
+							"value": "24h",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

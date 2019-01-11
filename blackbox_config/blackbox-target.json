@@ -14,5 +14,13 @@
     "targets": [
       "google.com"
     ]
+  },
+  {
+    "labels": {
+      "job": "blackbox"
+    },
+    "targets": [
+      "google1.com"
+    ]
   }
 ]
