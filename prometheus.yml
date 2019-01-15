@@ -68,6 +68,7 @@ scrape_configs:
     file_sd_configs:
       - files:
           - './blackbox_config/blackbox-target.json'
+        refresh_interval: 1m
 
 # Alerting specifies settings related to the Alertmanager.
 alerting:

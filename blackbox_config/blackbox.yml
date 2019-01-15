@@ -15,6 +15,7 @@ modules:
       method: POST
       headers:
         Content-Type: application/json
+        key: 1
       body: '{}'
       basic_auth:
         username: "username"

@@ -101,3 +101,7 @@ target.json文件的写法
 ```
 使用`up{job="node"}`可以查看这个job里面起起来的target。   
 通常情况下，建议使用JSON-generating process/tool 来做这件事。
+
+### 获取Spring Boot 应用的状态
+初始的Spring Boot应用来自[官网rest service demo](https://spring.io/guides/gs/rest-service/)
+

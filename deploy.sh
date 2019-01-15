@@ -46,14 +46,17 @@ function deploy_kong() {
                -e "POSTGRES_USER=kong" \
                -e "POSTGRES_DB=kong" \
                postgres:9.6
+    echo "Sleep a while to wait the db ready"
+    sleep 5
 
     echo "Prepare kong database"
     docker run --rm \
-     --network=kong-net \
-     -e "KONG_DATABASE=postgres" \
-     -e "KONG_PG_HOST=kong-database" \
-     -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \
-     kong:latest kong migrations up
+        --network=kong-net \
+        --link kong-database:kong-database \
+        -e "KONG_DATABASE=postgres" \
+        -e "KONG_PG_HOST=kong-database" \
+        -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \
+        kong:latest kong migrations up
 
     echo "Start kong on 8000、8001、8443、8444"
     docker run -d --name kong \
