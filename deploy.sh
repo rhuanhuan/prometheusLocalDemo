@@ -15,9 +15,11 @@ function deploy_alert_manager() {
         --config.file=/etc/alertmanager/config.yml
 }
 
-function deploy_grafana() {
+function deploy_grafana_and_integrate_with_oauth() {
     echo "Deploy Grafana container locally on 3001"
-    docker run -d --name=grafana -p 3001:3000 grafana/grafana
+    docker run -d --name=grafana -p 3001:3001 \
+    -v `pwd`/grafana/custom.ini:/etc/grafana/grafana.ini \
+    grafana/grafana
 }
 
 function deploy_prometheus_and_cAdvisor() {
@@ -99,7 +101,7 @@ case $1 in
     deploy_prometheus) deploy_prometheus;;
     deploy_alert_manager) deploy_alert_manager;;
     deploy_prometheus_and_cAdvisor) deploy_prometheus_and_cAdvisor;;
-    deploy_grafana) deploy_grafana;;
+    deploy_grafana) deploy_grafana_and_integrate_with_oauth;;
     deploy_kong) deploy_kong;;
     install_node_exporter) install_node_exporter $2;;
     install_black_box_exporter_and_test_probe_baidu) install_black_box_exporter_and_test_probe_baidu;;
