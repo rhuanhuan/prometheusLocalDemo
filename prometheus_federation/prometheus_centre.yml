@@ -1,0 +1,33 @@
+global:
+  scrape_interval: 1m
+
+rule_files:
+  - /etc/prometheus/rules.yml
+
+scrape_configs:
+  - job_name: 'federate'
+    scrape_interval: 15s
+    # If honor_labels is set to "true", label conflicts are resolved by keeping label
+    # values from the scraped data and ignoring the conflicting server-side labels.
+    #
+    # If honor_labels is set to "false", label conflicts are resolved by renaming
+    # conflicting labels in the scraped data to "exported_<original-label>" (for
+    # example "exported_instance", "exported_job") and then attaching server-side
+    # labels. This is useful for use cases such as federation, where all labels
+    # specified in the target should be preserved.
+    honor_labels: false
+    metrics_path: '/federate'
+# match[]参数可以指定我们可以指定需要获取的时间序列。
+# match[]参数必须有。
+# match[]参数必须是一个瞬时向量选择器.
+# 多个match取并集
+    params:
+      'match[]':
+        - '{job="prometheus"}'
+        - '{job="cadvisor"}'
+#        - '{__name__=~"job:.*"}'
+#        - '{__name__=~"node.*"}'
+    static_configs:
+      - targets:
+          - 'docker.for.mac.localhost:9089'
+          - 'docker.for.mac.localhost:9088'

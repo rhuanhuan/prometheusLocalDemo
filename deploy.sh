@@ -97,10 +97,16 @@ function install_black_box_exporter_and_test_probe_baidu() {
     curl "http://localhost:9115/probe?module=http_2xx&target=baidu.com"
 }
 
+function deploy_prometheus_federation() {
+    echo "Deploy Prometheus container locally on 9090"
+    cd prometheus_federation/ && docker-compose up
+}
+
 case $1 in
     deploy_prometheus) deploy_prometheus;;
     deploy_alert_manager) deploy_alert_manager;;
     deploy_prometheus_and_cAdvisor) deploy_prometheus_and_cAdvisor;;
+    deploy_prometheus_federation) deploy_prometheus_federation;;
     deploy_grafana) deploy_grafana_and_integrate_with_oauth;;
     deploy_kong) deploy_kong;;
     install_node_exporter) install_node_exporter $2;;
