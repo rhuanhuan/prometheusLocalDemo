@@ -58,7 +58,7 @@ function deploy_kong() {
         -e "KONG_DATABASE=postgres" \
         -e "KONG_PG_HOST=kong-database" \
         -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \
-        kong:latest kong migrations up
+        kong:latest kong migrations bootstrap
 
     echo "Start kong on 8000、8001、8443、8444"
     docker run -d --name kong \
@@ -75,7 +75,7 @@ function deploy_kong() {
     -p 8443:8443 \
     -p 8001:8001 \
     -p 8444:8444 \
-    kong:latest
+    kong:latest -- "kong prepare -p /usr/local/kong && /usr/local/openresty/nginx/sbin/nginx -c /usr/local/kong/nginx.conf -p /usr/local/kong/"
 
     enable_kong_prometheus_plugin
 }
