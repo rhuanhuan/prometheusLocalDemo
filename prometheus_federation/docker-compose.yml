@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   prometheus_centre:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.9.0
     container_name: prometheus_centre
     ports:
     - 9090:9090
@@ -14,7 +14,7 @@ services:
     - prometheus_1
     - prometheus_2
   prometheus_1:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.9.0
     container_name: prometheus_1
     ports:
       - 9089:9090
@@ -24,7 +24,7 @@ services:
     volumes:
       - ./prometheus_1.yml:/etc/prometheus/prometheus.yml:ro
   prometheus_2:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.9.0
     container_name: prometheus_2
     ports:
       - 9088:9090

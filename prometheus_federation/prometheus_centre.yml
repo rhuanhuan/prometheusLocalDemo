@@ -6,6 +6,10 @@ rule_files:
 
 scrape_configs:
   - job_name: 'federate'
+    metric_relabel_configs:
+      - source_labels: [name]
+        regex: 'prometheus_1'
+        action: drop
     scrape_interval: 15s
     # If honor_labels is set to "true", label conflicts are resolved by keeping label
     # values from the scraped data and ignoring the conflicting server-side labels.
