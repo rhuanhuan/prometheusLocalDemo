@@ -3,6 +3,8 @@ services:
   prometheus_centre:
     image: prom/prometheus:v2.9.0
     container_name: prometheus_centre
+    environment:
+      - DEBUG=1
     ports:
     - 9090:9090
     command:
